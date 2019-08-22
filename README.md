@@ -5,5 +5,5 @@ creation of dockers
 
 1. centos for creating RPM from python3.6 modules with bdist\_rpm
 2. Docker Compose for initiating a docker with mirth 3.8 on CentOS and mariadb along with it. [WIP]
-
+3. Docker compose for initiating a docker within alpine, creating a minimal container for mirth. Composes with Mariadb
 
