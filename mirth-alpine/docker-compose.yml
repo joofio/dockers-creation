@@ -1,0 +1,25 @@
+version: "1"
+services:
+
+    mirthconnect:
+      image: test
+      container_name: mirthconnect
+      links:
+        - mysql
+      ports:
+        - 8083:8083
+        - 8443:8443
+
+    mysql:
+      image: mariadb:latest
+      container_name: mariadb
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      volumes:
+        - /home/$USER/data/mysql:/var/lib/mysql
+      environment:
+        - MYSQL_DATABASE=mirthdb
+        - MYSQL_ROOT_PASSWORD=123456
+        - MYSQL_USER=mirth
+        - MYSQL_PASSWORD=passwd
+      ports:
+        - 3306:3306
