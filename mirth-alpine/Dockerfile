@@ -2,6 +2,7 @@ from alpine
 
 ENV MIRTH_CONNECT_VERSION 3.6.0.b2287
 
+
 RUN apk add openjdk8
 RUN \
   cd /tmp && \
@@ -16,7 +17,19 @@ WORKDIR /opt/mirth-connect
 EXPOSE 8080 8443
 
 # edit mirth.properties
-COPY mirth.properties /tmp
-RUN \cp /tmp/mirth.properties /opt/mirth-connect/conf/mirth.properties
+ARG DATABASE=mysql
+ENV DATABASE=$DATABASE
+ARG DATABASE_NAME=mirthdb
+ENV DATABASE_NAME=$DATABASE_NAME
+ARG DATABASE_URL=jdbc:mysql://mysql:3306/${DATABASE_NAME}
+ENV DATABASE_URL=$DATABASE_URL
+ARG DATABASE_USER=mirth
+ENV DATABASE_USER=$DATABASE_USER
+ARG DATABASE_PASSWORD=passwd
+ENV DATABASE_PASSWORD=$DATABASE_PASSWORD
+
+COPY entrypoint.sh /tmp
+RUN chmod 777 -R /tmp/entrypoint.sh
+ENTRYPOINT ["/bin/sh","/tmp/entrypoint.sh"]
 
 CMD ["java", "-jar", "mirth-server-launcher.jar"]
