@@ -31,6 +31,9 @@ ENV DATABASE_PASSWORD=$DATABASE_PASSWORD
 #edit mcserver
 ARG XMX=1G
 ENV XMX=$XMX
+ARG XMS=512m
+ENV XMS=$XMS
+
 
 COPY entrypoint.sh /tmp
 RUN chmod 777 -R /tmp/entrypoint.sh
