@@ -5,4 +5,6 @@ sed -i 's/database = derby/database = '"${DATABASE}"'/g' /opt/mirth-connect/conf
 sed -i 's!database.url =.*!database.url = '"${DATABASE_URL}"'!g' /opt/mirth-connect/conf/mirth.properties
 sed -i 's/database.username =.*/database.user = '"${DATABASE_USER}"'/g' /opt/mirth-connect/conf/mirth.properties
 sed -i 's/database.password =.*/database.password = '"${DATABASE_PASSWORD}"'/g' /opt/mirth-connect/conf/mirth.properties
+sed -i 's/Xmx.*/Xmx'"${XMX}"'/g' /opt/mirth-connect/mcserver.vmoptions
 cat /opt/mirth-connect/conf/mirth.properties
+cat /opt/mirth-connect/mcserver.vmoptions
