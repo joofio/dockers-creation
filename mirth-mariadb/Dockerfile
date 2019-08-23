@@ -21,8 +21,10 @@ RUN unzip /tmp/fhir-3.8.0.b1172.zip -d /opt/mirth-connect/extensions && \
     rm /tmp/fhir-3.8.0.b1172.zip
 
 # edit mirth.properties
-COPY mirth.properties /tmp
-RUN \cp /tmp/mirth.properties /opt/mirth-connect/conf/mirth.properties
+# COPY mirth.properties /tmp
+# RUN \cp /tmp/mirth.properties /opt/mirth-connect/conf/mirth.properties
+RUN echo "assasda $MIRTH_DOWNLOAD_URL"
+RUN echo "# $MIRTH_DOWNLOAD_URL">>/opt/mirth-connect/conf/mirth.properties 
 
 # COPY docker-entrypoint.sh /
 # ENTRYPOINT ["sh","/docker-entrypoint.sh"]
