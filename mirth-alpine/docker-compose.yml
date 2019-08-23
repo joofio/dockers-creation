@@ -1,8 +1,8 @@
-version: "1"
+version: "2"
 services:
 
     mirthconnect:
-      image: test
+      image: mirthminimal
       container_name: mirthconnect
       links:
         - mysql
