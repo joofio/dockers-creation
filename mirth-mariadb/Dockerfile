@@ -21,13 +21,19 @@ RUN unzip /tmp/fhir-3.8.0.b1172.zip -d /opt/mirth-connect/extensions && \
     rm /tmp/fhir-3.8.0.b1172.zip
 
 # edit mirth.properties
-# COPY mirth.properties /tmp
-# RUN \cp /tmp/mirth.properties /opt/mirth-connect/conf/mirth.properties
-RUN echo "assasda $MIRTH_DOWNLOAD_URL"
-RUN echo "# $MIRTH_DOWNLOAD_URL">>/opt/mirth-connect/conf/mirth.properties 
+ARG DATABASE=mysql
+ENV DATABASE=$DATABASE
+ARG DATABASE_NAME=mirthdb
+ENV DATABASE_NAME=$DATABASE_NAME
+ARG DATABASE_URL=jdbc:mysql://mysql:3306/${DATABASE_NAME}
+ENV DATABASE_URL=$DATABASE_URL
+ARG DATABASE_USER=mirth
+ENV DATABASE_USER=$DATABASE_USER
+ARG DATABASE_PASSWORD=passwd
+ENV DATABASE_PASSWORD=$DATABASE_PASSWORD
 
-# COPY docker-entrypoint.sh /
-# ENTRYPOINT ["sh","/docker-entrypoint.sh"]
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["sh","/docker-entrypoint.sh"]
 
 
 EXPOSE 8080 8443

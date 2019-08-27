@@ -1,4 +1,4 @@
-# Mirth Connect configuration file
+echo '# Mirth Connect configuration file
 
 # directories
 dir.appdata = appdata
@@ -67,7 +67,7 @@ configurationmap.path = ${dir.appdata}/configuration.properties
 rhino.languageversion = es6
 
 # options: derby, mysql, postgres, oracle, sqlserver
-database = mysql
+database = '"${DATABASE}"'
 
 # examples:
 #	Derby		jdbc:derby:${dir.appdata}/mirthdb;create=true
@@ -75,7 +75,7 @@ database = mysql
 # 	MySQL		jdbc:mysql://localhost:3306/mirthdb
 #	Oracle		jdbc:oracle:thin:@localhost:1521:DB
 #	SQLServer	jdbc:jtds:sqlserver://localhost:1433/mirthdb
-database.url = jdbc:mysql://mariadb:3306/mirthdb
+database.url = '"${DATABASE_URL}"'
 
 # if using a custom driver, specify it here
 #database.driver = 
@@ -86,8 +86,8 @@ database.max-connections = 20
 database-readonly.max-connections = 20
 
 # database credentials
-database.username = mirth
-database.password = passwd
+database.username = '"${DATABASE_USER}"'
+database.password = '"${DATABASE_PASSWORD}"'
 
 # If true, various read-only statements are separated into their own connection pool.
 # By default the read-only pool will use the same connection information as the master pool,
@@ -96,4 +96,4 @@ database.password = passwd
 #
 # database-readonly.url = jdbc:...
 # 
-database.enable-read-write-split = true
+database.enable-read-write-split = true'>opt/mirth-connect/conf/mirth.properties

@@ -1,4 +1,4 @@
-from alpine
+FROM alpine
 
 ENV MIRTH_CONNECT_VERSION 3.6.0.b2287
 

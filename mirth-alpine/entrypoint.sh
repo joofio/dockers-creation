@@ -17,5 +17,6 @@ echo "-Dcom.sun.management.jmxremote.port=9293
 -Djava.rmi.server.hostname=localhost
 -Dcom.sun.management.jmxremote.authenticate=false">>/opt/mirth-connect/mcservice.vmoptions
 
+#debug
 cat /opt/mirth-connect/conf/mirth.properties
 cat /opt/mirth-connect/mcserver.vmoptions
