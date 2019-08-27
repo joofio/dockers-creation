@@ -20,6 +20,10 @@ COPY fhir-3.8.0.b1172.zip /tmp
 RUN unzip /tmp/fhir-3.8.0.b1172.zip -d /opt/mirth-connect/extensions && \
     rm /tmp/fhir-3.8.0.b1172.zip
 
+
+EXPOSE 8080 8443
+WORKDIR /opt/mirth-connect
+
 # edit mirth.properties
 ARG DATABASE=mysql
 ENV DATABASE=$DATABASE
@@ -32,11 +36,8 @@ ENV DATABASE_USER=$DATABASE_USER
 ARG DATABASE_PASSWORD=passwd
 ENV DATABASE_PASSWORD=$DATABASE_PASSWORD
 
-COPY entrypoint.sh /
-ENTRYPOINT ["/bin/sh","/entrypoint.sh"]
-
-
-EXPOSE 8080 8443
-WORKDIR /opt/mirth-connect
+COPY entrypoint.sh /tmp
+RUN chmod 777 -R /tmp/entrypoint.sh
+ENTRYPOINT ["/bin/sh","/tmp/entrypoint.sh"]
 
 CMD ["java", "-jar", "mirth-server-launcher.jar"]
