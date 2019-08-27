@@ -18,7 +18,7 @@ echo "-Dcom.sun.management.jmxremote.port=9293
 -Dcom.sun.management.jmxremote.authenticate=false">>/opt/mirth-connect/mcservice.vmoptions
 
 #debug
-#cat /opt/mirth-connect/conf/mirth.properties
+cat /opt/mirth-connect/conf/mirth.properties
 #cat /opt/mirth-connect/mcserver.vmoptions
 #ls /opt/mirth-connect/logs
 
