@@ -96,4 +96,6 @@ database.password = '"${DATABASE_PASSWORD}"'
 #
 # database-readonly.url = jdbc:...
 # 
-database.enable-read-write-split = true'>opt/mirth-connect/conf/mirth.properties
+database.enable-read-write-split = true'>/opt/mirth-connect/conf/mirth.properties
+
+cat /opt/mirth-connect/conf/mirth.properties

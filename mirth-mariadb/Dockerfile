@@ -32,8 +32,8 @@ ENV DATABASE_USER=$DATABASE_USER
 ARG DATABASE_PASSWORD=passwd
 ENV DATABASE_PASSWORD=$DATABASE_PASSWORD
 
-COPY docker-entrypoint.sh /
-ENTRYPOINT ["sh","/docker-entrypoint.sh"]
+COPY entrypoint.sh /
+ENTRYPOINT ["/bin/sh","/entrypoint.sh"]
 
 
 EXPOSE 8080 8443
