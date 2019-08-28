@@ -5,12 +5,12 @@ services:
       image: mirthconnect
       container_name: mirthconnect
       links:
-        - mariadb
+        - mysql
       ports:
-        - 8083:8083
+        - 8080:8080
         - 8443:8443
 
-    mariadb:
+    mysql:
       image: mariadb:latest
       container_name: mariadb
       command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

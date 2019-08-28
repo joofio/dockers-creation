@@ -1,3 +1,4 @@
+#! /bin/bash
 echo '# Mirth Connect configuration file
 
 # directories
@@ -96,6 +97,7 @@ database.password = '"${DATABASE_PASSWORD}"'
 #
 # database-readonly.url = jdbc:...
 # 
-database.enable-read-write-split = true'>/opt/mirth-connect/conf/mirth.properties
+database.enable-read-write-split = true
+'>/opt/mirth-connect/conf/mirth.properties
 
-cat /opt/mirth-connect/conf/mirth.properties
+java -jar /opt/mirth-connect/mirth-server-launcher.jar

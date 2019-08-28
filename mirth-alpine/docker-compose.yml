@@ -13,10 +13,11 @@ services:
     mysql:
       image: mariadb:latest
       container_name: mariadb
-      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      command: mysqld
       volumes:
         - /Users/$USER/data/mysql:/var/lib/mysql
       environment:
+        - MYSQL_ROOT_HOST=%
         - MYSQL_DATABASE=mirthdb
         - MYSQL_ROOT_PASSWORD=123456
         - MYSQL_USER=mirth

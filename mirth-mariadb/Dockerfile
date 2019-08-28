@@ -29,7 +29,7 @@ ARG DATABASE=mysql
 ENV DATABASE=$DATABASE
 ARG DATABASE_NAME=mirthdb
 ENV DATABASE_NAME=$DATABASE_NAME
-ARG DATABASE_URL=jdbc:mysql://mysql:3306/${DATABASE_NAME}
+ARG DATABASE_URL=jdbc:mysql://mariadb:3306/${DATABASE_NAME}
 ENV DATABASE_URL=$DATABASE_URL
 ARG DATABASE_USER=mirth
 ENV DATABASE_USER=$DATABASE_USER
@@ -38,6 +38,6 @@ ENV DATABASE_PASSWORD=$DATABASE_PASSWORD
 
 COPY entrypoint.sh /tmp
 RUN chmod 777 -R /tmp/entrypoint.sh
-ENTRYPOINT ["/bin/sh","/tmp/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash","/tmp/entrypoint.sh"]
 
 CMD ["java", "-jar", "mirth-server-launcher.jar"]

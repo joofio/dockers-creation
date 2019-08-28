@@ -34,9 +34,10 @@ ENV XMX=$XMX
 ARG XMS=512m
 ENV XMS=$XMS
 
-#CMD ["java", "-jar", "mirth-server-launcher.jar"]
 
 COPY entrypoint.sh /tmp
+RUN chmod a+x /tmp/entrypoint.sh
 ENTRYPOINT ["/bin/sh","/tmp/entrypoint.sh"]
 
-
+#check if necessary
+CMD ["java", "-jar", "mirth-server-launcher.jar"]
