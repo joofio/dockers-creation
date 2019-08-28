@@ -1,7 +1,5 @@
 #! /bin/bash
 
-#cat /opt/mirth-connect/conf/mirth.properties
-
 echo '# Mirth Connect configuration file
 
 # directories
@@ -96,6 +94,7 @@ echo "-server
 -Dcom.sun.management.jmxremote.ssl=false
 -Djava.rmi.server.hostname=localhost
 -Dcom.sun.management.jmxremote.authenticate=false">/opt/mirth-connect/mcserver.vmoptions
+
 echo "-Dcom.sun.management.jmxremote.port=9293
 -Dcom.sun.management.jmxremote.rmi.port=9293
 -Dcom.sun.management.jmxremote.local.only=false 
@@ -106,7 +105,6 @@ echo "-Dcom.sun.management.jmxremote.port=9293
 #debug
 #cat /opt/mirth-connect/conf/mirth.properties
 #cat /opt/mirth-connect/mcserver.vmoptions
+cat /opt/mirth-connect/mcservice.vmoptions
 
-cat /opt/mirth-connect/mcserver.vmoptions
 java -jar /opt/mirth-connect/mirth-server-launcher.jar
-

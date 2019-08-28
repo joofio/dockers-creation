@@ -7,17 +7,16 @@ services:
       links:
         - mysql
       ports:
-        - 8083:8083
+        - 8080:8080
         - 8443:8443
 
     mysql:
       image: mariadb:latest
       container_name: mariadb
-      command: mysqld
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
       volumes:
-        - /Users/$USER/data/mysql:/var/lib/mysql
+        - /home/$USER/data/mysql:/var/lib/mysql
       environment:
-        - MYSQL_ROOT_HOST=%
         - MYSQL_DATABASE=mirthdb
         - MYSQL_ROOT_PASSWORD=123456
         - MYSQL_USER=mirth
