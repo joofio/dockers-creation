@@ -20,6 +20,8 @@ COPY fhir-3.8.0.b1172.zip /tmp
 RUN unzip /tmp/fhir-3.8.0.b1172.zip -d /opt/mirth-connect/extensions && \
     rm /tmp/fhir-3.8.0.b1172.zip
 
+# configure core metrics
+COPY metrics-core-3.0.2.jar /opt/mirth-connect/server-lib 
 
 EXPOSE 8080 8443
 WORKDIR /opt/mirth-connect
