@@ -13,7 +13,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         cache: ${{ github.event_name != 'schedule' }}
-        dockerfile: mirth-alpine/Dockerfile
+        workdir: mirth-alpine
     - name: Build and pub - mirthbase
       uses: elgohr/Publish-Docker-Github-Action@master
       env:
@@ -24,4 +24,4 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         cache: ${{ github.event_name != 'schedule' }}
-        dockerfile: mirth-mariadb/Dockerfile
+        workdir: mirth-mariadb
