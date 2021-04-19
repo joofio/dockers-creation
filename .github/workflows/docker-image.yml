@@ -1,0 +1,27 @@
+name: Publish Dockers
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - name: Build and pub - minimal
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: jfcal/mirthminimal
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        cache: ${{ github.event_name != 'schedule' }}
+        dockerfile: mirth-alpine/Dockerfile
+    - name: Build and pub - mirthbase
+      uses: elgohr/Publish-Docker-Github-Action@master
+      env:
+        OSVER: "nvidia/cuda:9.0-cudnn7-runtime"
+        TFVER: "tensorflow-gpu"
+      with:
+        name: jfcal/mirthminimal
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        cache: ${{ github.event_name != 'schedule' }}
+        dockerfile: mirth-mariadb/Dockerfile
