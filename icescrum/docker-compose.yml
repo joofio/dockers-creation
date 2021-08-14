@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-icescrum
+    volumes:
+      - /home/$USER/data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=icescrum
+      - MYSQL_ROOT_PASSWORD=myPass
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  icescrum:
+    image: icescrum/icescrum
+    volumes:
+      - /home/$USER/data/icescrum:/root
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      - ICESCRUM_HTTPS_PROXY: true
